@@ -16,15 +16,28 @@ type Product struct {
 	UpdatedAt   time.Time
 }
 
-func CreateProduct(name string, description string, price float64, quantity int) {
+func InsertProduct(name string, description string, price float64, quantity int) {
 	db := db.DbConnect()
 
 	query, err := db.Prepare("INSERT INTO products (name, description, price, quantity, created_at, updated_at) VALUES ($1, $2, $3, $4, now(), now())")
 	if err != nil {
-		panic("Erro de criação ed insert de produto: " + err.Error())
+		panic("Erro de criação de insert de produto: " + err.Error())
 	}
 
 	query.Exec(name, description, price, quantity)
+
+	defer db.Close()
+}
+
+func UpdateProduct(id int, name string, description string, price float64, quantity int) {
+	db := db.DbConnect()
+
+	query, err := db.Prepare("UPDATE products SET name=$1, description=$2, price=$3, quantity=$4, updated_at=now() WHERE id=$5")
+	if err != nil {
+		panic("Erro de criação de update de produto: " + err.Error())
+	}
+
+	query.Exec(name, description, price, quantity, id)
 
 	defer db.Close()
 }

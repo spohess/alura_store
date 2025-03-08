@@ -22,8 +22,9 @@
                     <div class="row">
                         <div class="col-sm-12 mb-3">
                             <div class="form-group">
-                                <label for="name">ID:</label>
-                                <input type="text" name="name" value="{{.Id}}" class="form-control" disabled>
+                                <label for="id">ID:</label>
+                                <input type="hidden" name="id" value="{{.Id}}">
+                                <input type="text" value="{{.Id}}" class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-sm-12 mb-3">
