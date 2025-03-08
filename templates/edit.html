@@ -1,0 +1,66 @@
+{{define "Edit"}}
+<!doctype html>
+<html lang="en">
+
+{{template "_head"}}
+
+<body>
+
+    {{template "_navbar"}}
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-6">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-5">Editar Produto</h1>
+                        <p class="lead">Insira os detalhes</p>
+                    </div>
+                </div>
+
+                <form method="POST" action="update">
+                    <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="form-group">
+                                <label for="name">ID:</label>
+                                <input type="text" name="name" value="{{.Id}}" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mb-3">
+                            <div class="form-group">
+                                <label for="name">Nome:</label>
+                                <input type="text" name="name" value="{{.Name}}" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mb-3">
+                            <div class="form-group">
+                                <label for="description">Descrição:</label>
+                                <input type="text" name="description" value="{{.Description}}" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label for="price">Preço:</label>
+                                <input type="number" name="price" value="{{.Price}}" class="form-control" required step="0.01">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label for="quantity">Quantidade:</label>
+                                <input type="number" name="quantity" value="{{.Quantity}}" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" value="salvar" class="btn btn-success">Salvar</button>
+                    <a class="btn btn-info" href="/">Voltar</a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    {{template "_scripts"}}
+</body>
+
+</html>
+{{end}}
